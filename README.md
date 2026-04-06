@@ -104,8 +104,8 @@ Also linked to orders.
 - Order → Order Items (one to many)
 - Product → Order Items (one to many)
 - Product → Inventory (one to one)
-- Order → Payment (one to one)
-- Order → Shipping (one to one)
+- Order → Payment (one to many)
+- Order → Shipping (one to many)
 
 ---
 
