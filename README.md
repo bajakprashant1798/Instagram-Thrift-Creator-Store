@@ -14,6 +14,7 @@ Initially, orders come from Instagram DMs / WhatsApp, but as the business grows,
 
 ---
 ## ER Diagram
+-- link for eraser: https://app.eraser.io/workspace/7Nx1gYjinvgYklLzlcWQ?origin=share
 
 <img width="1545" height="1547" alt="Instagram-Thrift-Creator-Store_dark" src="https://github.com/user-attachments/assets/79b91aad-b40e-4bdc-ada0-b5a2d9a3ee7c" />
 
