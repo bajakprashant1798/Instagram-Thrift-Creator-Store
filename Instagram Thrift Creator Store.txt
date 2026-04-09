@@ -1,0 +1,103 @@
+products [icon: box, color: orange] {
+  id serial pk
+  name varchar(120)
+  description text
+  price decimal
+  product_type varchar(20)  // thrift | handmade
+  category_id serial fk
+  created_at timestamp
+  updated_at timestamp
+}
+
+categories [icon: tag, color: orange] {
+  id serial pk
+  name varchar(60)
+  created_at timestamp
+  updated_at timestamp
+}
+
+inventory [icon: database, color: yellow] {
+  id serial pk
+  product_id serial fk
+  quantity int
+  created_at timestamp
+  updated_at timestamp
+}
+
+product_info [icon: layers, color: yellow] {
+  id serial pk
+  product_id serial fk
+  size varchar(20)
+  color varchar(45)
+  condition text
+  price decimal
+  quantity int
+  created_at timestamp
+  updated_at timestamp
+}
+
+customers [icon: user, color: blue] {
+  id serial pk
+  name varchar(362)
+  phone varchar(10)
+  email varchar(362)
+  address text
+  created_at timestamp
+  updated_at timestamp
+}
+
+orders [icon: shopping-cart, color: green] {
+  id serial pk
+  customer_id serial fk
+  order_date timestamp
+  total_amount decimal
+  payment_status string   // paid | pending
+  shipping_status string // pending | shipped| delivered
+  address string
+  created_at timestamp
+  updated_at timestamp
+}
+
+order_items [icon: list, color: green] {
+  id serial pk
+  order_id serial fk
+  product_id serial fk
+  product_info_id serial fk
+  quantity int
+  price decimal
+  created_at timestamp
+  updated_at timestamp
+}
+
+payments [icon: credit-card, color: purple] {
+  id serial pk
+  order_id serial fk
+  amount decimal
+  payment_method varchar(65)  // UPI | COD | etc
+  payment_status varchar(45)
+  payment_date timestamp
+}
+
+shipping [icon: truck, color: purple] {
+  id serial pk
+  order_id serial fk
+  shipping_status varchar(45)
+  tracking_number varchar(65)
+  courier_name varchar(250)
+  shipped_date timestamp
+  delivered_date timestamp
+}
+
+
+products.category_id > categories.id
+inventory.product_id > products.id
+product_info.product_id > products.id
+
+orders.customer_id > customers.id
+
+order_items.order_id > orders.id
+order_items.product_id > products.id
+order_items.product_info_id > product_info.id
+
+payments.order_id > orders.id
+shipping.order_id > orders.id
